@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 400px;
+    max-width: 400px;
+    height: 100%;
+}
+
+.icon {
+    width: 178px;
+    height: 32px;
+    margin-bottom: 80px;
+}
+
+.title {
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 38px;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}

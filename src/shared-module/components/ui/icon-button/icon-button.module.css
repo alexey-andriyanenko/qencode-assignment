@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.container, .container:hover, .container:active, .container:focus {
+    background-color: var(--button-default-background);
+}
