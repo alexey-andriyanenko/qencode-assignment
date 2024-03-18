@@ -1,58 +1,74 @@
-Frontend for project ["Maritime Cargo Transportation" api](https://github.com/alexey-andriyanenko/maritime-cargo-transportation).
+Qencode assignment for frontend developer position.
 
-This project is built on basis of [HyperPostClient project](https://github.com/alexey-andriyanenko/HyperPostClient)
-which itself is frontend for ["HyperPost" api project](https://github.com/alexey-andriyanenko/HyperPost.)
+Notes:
+- Node.js v20 is required to run the application
+- To access password reset page it is required to manually pass ?token=some_token&secret=some_secret to the /login/reset page because credentials were not provided to properly test api integration
 
 **Technologies used:**
 - React
 - MobX
 - Typescript
 - Webpack
-- Jest
-- Testing Library
-- Material UI
-- Mock Service Worker
+- Axios
+- CSS Modules
 - Eslint
 - Prettier
 
-**Technical moments:**
-- custom http service
-- modular architecture to be done
-
 Project Structure
 ```
-├── to be done
+├── src
+│   ├── core-module - module which bootstrap all other modules
+│   ├── shared-module - module which contains shared components, services, etc.
+│   ├── auth-module - module which contains authentication logic
+│   ├── fonts - application fonts
+│   ├── styles - application styles
+│   ├── index.tsx - application entry point
+├──
 ```
 
+Module structure
+```
+├── module-name
+│   ├── components
+│   ├── api 
+│   ├── pages
+│   ├── stores
+│   ├── constants
+│   ├── models
+│   ├── utils
+│   ├── hooks
+├──
+```
+
+
 ## Run application
+
+Install dependencies
+```bash
+npm install
+```
 
 Run locally
 ```bash 
 npm run dev
 ```
 
-Run locally with mocked api
-```bash 
-npm run dev:mock
+Build application
+```bash
+npm run build
 ```
 
-Run tests
-```bash 
-npm run test
+Serve production build locally
+```bash
+npm run serve:prod
 ```
 
-Check linter
+Check for linter errors
 ```bash 
-npm run lint
+npm run lint:check
 ```
 
-Fix linter 
+Fix linter errors
 ```bash 
 npm run lint:fix
 ```
-
-**Project Structure:**
-![Project Structure](docs/modular-architecture-preview.drawio.png)
-
-**Modals Architecture:**
-![Modals Architecture](docs/modals-architecture-preview.drawio.png)
