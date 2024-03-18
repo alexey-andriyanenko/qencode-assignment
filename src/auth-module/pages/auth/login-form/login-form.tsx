@@ -6,8 +6,11 @@ import { Button } from "src/shared-module/components/ui";
 import { TextField } from "src/shared-module/components/form";
 import { FormContainer, SocialLoginButton } from "src/auth-module/components";
 import { useAuthStore } from "src/auth-module/store";
+import { EMAIL_PATTERN } from "src/shared-module/constants";
 
 import styles from "./login-form.module.css";
+import { ILoginFormValues } from "./login-form.types";
+
 export const LoginForm = () => {
   const navigate = useNavigate();
   const userStore = useAuthStore();
@@ -16,8 +19,12 @@ export const LoginForm = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm<any>({
+  } = useForm<ILoginFormValues>({
     mode: "onSubmit",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
   const onSubmit = async (data: any) => {
@@ -43,7 +50,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <FormContainer title="Log in to your account">
+    <FormContainer title="Log in to your account" contentClassName={styles.content}>
       <div className={styles.socials}>
         <SocialLoginButton variant="github" />
         <SocialLoginButton variant="google" />
@@ -56,7 +63,19 @@ export const LoginForm = () => {
       </div>
 
       <div className={styles.fields}>
-        <TextField required id="email" data-testid="email" placeholder="Work email" />
+        <TextField
+          required
+          id="email"
+          data-testid="email"
+          placeholder="Work email"
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: EMAIL_PATTERN,
+              message: "Email must be valid",
+            },
+          })}
+        />
 
         <div className={styles.password}>
           <TextField
@@ -65,6 +84,13 @@ export const LoginForm = () => {
             type="password"
             id="password"
             data-testid="password"
+            {...register("password", {
+              required: "Password is required",
+              max: {
+                value: 8,
+                message: "Password must be at least 8 characters long",
+              },
+            })}
           />
 
           <div className={styles.forgotPassword}>

@@ -1,3 +1,7 @@
+.content {
+    gap: 30px;
+}
+
 .socials, .fields, .submit {
     width: 100%;
 }

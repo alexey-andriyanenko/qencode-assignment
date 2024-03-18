@@ -1,18 +1,13 @@
 {
-  "env": {
-    "jest/globals": true
-  },
   "plugins": [
     "react",
     "prettier",
-    "@typescript-eslint",
-    "jest"
+    "@typescript-eslint"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:jest/recommended",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -20,7 +15,6 @@
     "prettier/prettier": "error",
     "@typescript-eslint/ban-ts-comment": 1,
     "react/display-name": 0,
-    "react/prop-types": 0,
-    "jest/no-jasmine-globals": 0
+    "react/prop-types": 0
   }
 }
