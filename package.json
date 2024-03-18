@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "cross-env webpack-dev-server --config ./webpack.dev.config.ts",
-    "dev:mock": "cross-env ENABLE_MOCK=true webpack-dev-server --config ./webpack.dev.config.ts --env mock",
-    "build:dev": "webpack --config ./webpack.dev.config.ts",
+    "dev": "cross-env webpack-dev-server --config webpack.dev.config.ts",
+    "build": "webpack --config webpack.prod.config.ts",
+    "serve:prod": "cross-env webpack serve --config webpack.prod.config.ts --port 9090",
     "lint:check": "eslint --ext .ts,.tsx src",
     "lint:fix": "eslint --fix --ext .ts,.tsx src"
   },
