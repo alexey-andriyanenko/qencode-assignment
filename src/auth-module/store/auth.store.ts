@@ -4,7 +4,7 @@ import { httpClient } from "src/shared-module/api";
 import { authApiService, ILoginRequest } from "../api";
 
 class AuthStore {
-  private _isLogged: boolean | null = null;
+  private _isLogged = !!localStorage.getItem("token");
   private _token: string | null = localStorage.getItem("token");
 
   constructor() {
@@ -13,6 +13,10 @@ class AuthStore {
 
   public get isLogged() {
     return this._isLogged;
+  }
+
+  public get token() {
+    return this._token;
   }
 
   async login(data: ILoginRequest): Promise<void> {
@@ -29,6 +33,8 @@ class AuthStore {
 
   private _clear() {
     this._isLogged = false;
+    this._token = null;
+    localStorage.removeItem("token");
   }
 }
 
