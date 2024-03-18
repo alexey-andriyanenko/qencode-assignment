@@ -1,9 +1,11 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
+import { httpClient } from "src/shared-module/api";
 import { authApiService, ILoginRequest } from "../api";
 
 class AuthStore {
   private _isLogged: boolean | null = null;
+  private _token: string | null = localStorage.getItem("token");
 
   constructor() {
     makeAutoObservable(this);
@@ -14,10 +16,14 @@ class AuthStore {
   }
 
   async login(data: ILoginRequest): Promise<void> {
-    await authApiService.login(data);
+    const result = await authApiService.login(data);
 
     runInAction(() => {
+      localStorage.setItem("token", result.access_token);
+      httpClient.defaults.headers.common.Authorization = `Bearer ${result.access_token}`;
+
       this._isLogged = true;
+      this._token = result.access_token;
     });
   }
 

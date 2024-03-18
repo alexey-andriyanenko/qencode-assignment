@@ -1,4 +1,5 @@
 .container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,4 +31,40 @@
     background-color: var(--button-secondary-backgroudn);
     color: var(--button-secondary-text);
     border: 1px solid var(--button-secondary-border)
+}
+
+
+.container.disabled, .container.disabled:hover, .container.disabled:active, .container.disabled:focus {
+    background-color: var(--button-disabled-background);
+    color: var(--button-disabled-text);
+    border: 1px solid var(--button-disabled-border);
+    cursor: not-allowed;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+}
+
+.loader::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--button-loader-top);
+    border-top-color: var(--button-loader);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

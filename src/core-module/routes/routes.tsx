@@ -10,7 +10,7 @@ export const AppRoutes: React.FC = () => {
   return (
     <Routes>
       {routes.map((props) => (
-        <>
+        <React.Fragment key={props.path}>
           {props.isPrivate ? (
             <Route
               key={props.path}
@@ -20,7 +20,7 @@ export const AppRoutes: React.FC = () => {
           ) : (
             <Route key={props.path} {...props} />
           )}
-        </>
+        </React.Fragment>
       ))}
     </Routes>
   );

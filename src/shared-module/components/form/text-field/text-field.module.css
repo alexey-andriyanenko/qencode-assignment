@@ -45,6 +45,10 @@
     color: var(--text-field-primary-placeholder);
 }
 
+.input.error {
+    border: 1px solid var(--text-error);
+}
+
 .eyeBtn {
     position: absolute;
     top: 50%;
@@ -56,5 +60,12 @@
 .eyeIcon {
     width: 20px;
     height: 20px;
+}
+
+.errorMessage {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-error);
 }
 

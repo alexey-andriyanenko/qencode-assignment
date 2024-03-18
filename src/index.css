@@ -18,6 +18,14 @@ body {
     --text-primary: #1A1919;
     --text-secondary: #BEC5CC;
     --text-link: #316FEA;
+    --text-error: #FF4D4F;
+
+    --button-loader: #FFFFFF;
+    --button-loader-top: #316FEA;
+
+    --button-disabled-background: #F5F7F9;
+    --button-disabled-text: #A1ABB5;
+    --button-disabled-border: #D3D8DC;
 
     --button-default-background: #FFFFFF;
     --button-default-text: #060E1E;

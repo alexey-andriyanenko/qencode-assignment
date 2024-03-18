@@ -1,5 +1,5 @@
 export const classNames = (
-  ...classes: (string | null | undefined | Record<string, boolean>)[]
+  ...classes: (string | null | undefined | Record<string, boolean | undefined>)[]
 ): string => {
   return classes
     .filter((c) => !!c)
