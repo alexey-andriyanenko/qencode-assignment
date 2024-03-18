@@ -13,33 +13,3 @@ body {
     height: 100%;
     min-width: 320px;
 }
-
-:root {
-    --text-primary: #1A1919;
-    --text-secondary: #BEC5CC;
-    --text-link: #316FEA;
-    --text-error: #FF4D4F;
-
-    --button-loader: #FFFFFF;
-    --button-loader-top: #316FEA;
-
-    --button-disabled-background: #F5F7F9;
-    --button-disabled-text: #A1ABB5;
-    --button-disabled-border: #D3D8DC;
-
-    --button-default-background: #FFFFFF;
-    --button-default-text: #060E1E;
-    --button-default-border: #D3D8DC;
-
-    --button-primary-background: #316FEA;
-    --button-primary-text: #FFFFFF;
-
-    --button-secondary-backgroudn: #FFFFFF;
-    --button-secondary-text: #060E1E;
-    --button-secondary-border: #D3D8DC;
-
-    --text-field-primary-background: #FFFFFF;
-    --text-field-primary-placeholder: #A1ABB5;
-    --text-field-primary-text: var(--text-primary);
-    --text-field-primary-border: #D3D8DC;
-}

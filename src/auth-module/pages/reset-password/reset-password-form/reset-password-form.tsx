@@ -10,12 +10,9 @@ import { TextField } from "src/shared-module/components/form";
 import { Button } from "src/shared-module/components/ui";
 import { TErrorResponse } from "src/shared-module/api";
 
+import { resetPasswordFormResolver } from "./reset-passsword-form.validator";
+import { IResetPasswordFormValues } from "./reset-password-form.types";
 import styles from "./reset-password-form.module.css";
-
-interface IResetPasswordFormValues {
-  password: string;
-  confirmPassword: string;
-}
 
 export const ResetPasswordForm: React.FC = () => {
   const navigate = useNavigate();
@@ -26,6 +23,7 @@ export const ResetPasswordForm: React.FC = () => {
     setError,
     formState: { errors, isSubmitting },
   } = useForm<IResetPasswordFormValues>({
+    resolver: resetPasswordFormResolver,
     mode: "onSubmit",
     defaultValues: {
       password: "",
@@ -71,27 +69,17 @@ export const ResetPasswordForm: React.FC = () => {
           type="password"
           label="Password"
           placeholder="Password"
+          isError={!!errors.password}
           errorMessage={errors.password?.message}
-          {...register("password", {
-            required: "This field is required",
-            minLength: {
-              value: 8,
-              message: "Password must be at least 8 characters long",
-            },
-            maxLength: {
-              value: 20,
-              message: "Password must be at most 20 characters long",
-            },
-          })}
+          {...register("password")}
         />
         <TextField
           type="password"
           label="Confirm Password"
           placeholder="Password"
+          isError={!!errors.confirmPassword}
           errorMessage={errors.confirmPassword?.message}
-          {...register("confirmPassword", {
-            required: "This field is required",
-          })}
+          {...register("confirmPassword")}
         />
       </div>
       <Button variant="primary" type="submit" loading={isSubmitting}>

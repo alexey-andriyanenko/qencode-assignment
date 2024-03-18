@@ -23,29 +23,29 @@ export const TextField = forwardRef<null, ITextFieldProps>(
     const id = useId();
     const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
 
-    const handleTogglePasswordVisibility = () => setIsPasswordVisible((prev) => !prev);
+    const handleTogglePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsPasswordVisible((prev) => !prev);
+    };
 
     return (
       <div className={styles.container}>
         {label ? (
-          <label htmlFor={id} className={styles.label}>
+          <label htmlFor={props.id ?? id} className={styles.label}>
             {label}
           </label>
         ) : null}
         <div className={styles.inputContainer}>
           <input
+            {...props}
             ref={ref}
-            id={id}
             className={classNames(styles.input, styles[variant], className, {
               [styles.error]: isError,
             })}
             type={type === "password" && isPasswordVisible ? "text" : type}
-            {...props}
+            id={props.id ?? id}
           />
-
-          {isError && errorMessage ? (
-            <div className={styles.errorMessage}>{errorMessage}</div>
-          ) : null}
 
           {type === "password" ? (
             <IconButton
@@ -55,6 +55,8 @@ export const TextField = forwardRef<null, ITextFieldProps>(
             />
           ) : null}
         </div>
+
+        {isError && errorMessage ? <div className={styles.errorMessage}>{errorMessage}</div> : null}
       </div>
     );
   },

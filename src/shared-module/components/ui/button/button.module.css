@@ -14,25 +14,49 @@
     outline: none;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
 }
 
-.container.default, .container.default:hover, .container.default:active, .container.default:focus {
+.container.default, .container.default:focus {
     background-color: var(--button-default-background);
     color: var(--button-default-text);
     border: 1px solid var(--button-default-border);
 }
 
-.container.primary, .container.primary:hover, .container.primary:active, .container.primary:focus {
+.container.default:hover {
+    background-color: var(--button-default-hover-background);
+}
+
+.container.default:active {
+    background-color: var(--button-default-active-background);
+}
+
+.container.primary, .container.primary:focus {
     background-color: var(--button-primary-background);
     color: var(--button-primary-text);
 }
 
-.container.secondary, .container.secondary:hover, .container.secondary:active, .container.secondary:focus {
-    background-color: var(--button-secondary-backgroudn);
+.container.primary:hover {
+    background-color: var(--button-primary-hover-background);
+}
+
+.container.primary:active {
+    background-color: var(--button-primary-active-background);
+}
+
+.container.secondary, .container.secondary:focus {
+    background-color: var(--button-secondary-background);
     color: var(--button-secondary-text);
     border: 1px solid var(--button-secondary-border)
 }
 
+.container.secondary:hover {
+    background-color: var(--button-secondary-hover-background);
+}
+
+.container.secondary:active {
+    background-color: var(--button-secondary-active-background);
+}
 
 .container.disabled, .container.disabled:hover, .container.disabled:active, .container.disabled:focus {
     background-color: var(--button-disabled-background);
