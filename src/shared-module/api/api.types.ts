@@ -11,5 +11,8 @@ export type TErrorResponse = {
         msg: string;
         type: string;
       }>
+    | Array<{ field_name: string; error: string }>
     | string;
+  error: number;
+  timestamp: number;
 };
