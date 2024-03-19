@@ -25,14 +25,18 @@ export const LoginForm: React.FC = () => {
     register,
     handleSubmit,
     setError,
+    getFieldState,
     formState: { errors, isSubmitting },
   } = useForm<ILoginFormValues>({
-    mode: "onSubmit",
+    mode: "onChange",
     defaultValues: {
       email: "",
       password: "",
     },
   });
+  const fieldState = getFieldState("email");
+  const canShowPassword =
+    fieldState.isDirty && (!fieldState.invalid || fieldState.error?.type === "manual");
 
   const handleValid = async (data: ILoginFormValues) => {
     try {
@@ -87,33 +91,35 @@ export const LoginForm: React.FC = () => {
           })}
         />
 
-        <div className={styles.password}>
-          <TextField
-            required
-            placeholder="Enter password"
-            type="password"
-            id="password"
-            isError={!!errors.password}
-            errorMessage={errors.password?.message}
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 8,
-                message: "Password must be at least 8 characters long",
-              },
-              maxLength: {
-                value: 20,
-                message: "Password must be at most 20 characters long",
-              },
-            })}
-          />
+        {canShowPassword ? (
+          <div className={styles.password}>
+            <TextField
+              required
+              placeholder="Enter password"
+              type="password"
+              id="password"
+              isError={!!errors.password}
+              errorMessage={errors.password?.message}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 8,
+                  message: "Password must be at least 8 characters long",
+                },
+                maxLength: {
+                  value: 20,
+                  message: "Password must be at most 20 characters long",
+                },
+              })}
+            />
 
-          <div className={styles.forgotPassword}>
-            <Link to={FORGOT_PASSWORD_ROUTE.path} className={styles.link}>
-              Forgot password?
-            </Link>
+            <div className={styles.forgotPassword}>
+              <Link to={FORGOT_PASSWORD_ROUTE.path} className={styles.link}>
+                Forgot password?
+              </Link>
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
 
       <div className={styles.submit}>
